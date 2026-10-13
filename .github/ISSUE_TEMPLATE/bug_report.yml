@@ -1,0 +1,30 @@
+name: Bug report
+description: Report a reproducible problem in Molecules.
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include a minimal name, SMILES, or drawing when useful. Share only data you can publish.
+      placeholder: "1. Open the app…"
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python, PySide6, RDKit, and app version or commit.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or error output
+      description: Remove personal paths and private information before sharing.

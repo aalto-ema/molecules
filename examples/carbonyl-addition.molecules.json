@@ -1,0 +1,241 @@
+{
+  "schema_version": 3,
+  "title": "Untitled",
+  "atoms": [
+    {
+      "id": "61af2a9ac5834f49b42d6cf8a4249c8e",
+      "element": "O",
+      "x": 0.0,
+      "y": -60.0,
+      "charge": -1,
+      "isotope": 0,
+      "hydrogens": 1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 3,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "61af2a9ac5834f49b42d6cf8a4249c8e",
+      "step": 0
+    },
+    {
+      "id": "e4991afcd42c47d18f0178dffb1f0236",
+      "element": "C",
+      "x": -51.96152422706632,
+      "y": 9.999999999999988,
+      "charge": 0,
+      "isotope": 0,
+      "hydrogens": -1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 0,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "e4991afcd42c47d18f0178dffb1f0236",
+      "step": 0
+    },
+    {
+      "id": "76ce71711b944f6aba18902cd73a6338",
+      "element": "C",
+      "x": 0.0,
+      "y": -20.000000000000004,
+      "charge": 0,
+      "isotope": 0,
+      "hydrogens": -1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 0,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "76ce71711b944f6aba18902cd73a6338",
+      "step": 0
+    },
+    {
+      "id": "b8a148b576b34915903dfd5295f93117",
+      "element": "O",
+      "x": 51.96152422706632,
+      "y": 10.000000000000014,
+      "charge": 0,
+      "isotope": 0,
+      "hydrogens": -1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 0,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "b8a148b576b34915903dfd5295f93117",
+      "step": 0
+    },
+    {
+      "id": "34a21417bb924467863e7b3e9df3330f",
+      "element": "O",
+      "x": 333.92304845413264,
+      "y": -60.0,
+      "charge": 0,
+      "isotope": 0,
+      "hydrogens": 1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 2,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "61af2a9ac5834f49b42d6cf8a4249c8e",
+      "step": 1
+    },
+    {
+      "id": "6d4d45e13b0445488ea0007ed807b452",
+      "element": "C",
+      "x": 281.9615242270663,
+      "y": 9.999999999999988,
+      "charge": 0,
+      "isotope": 0,
+      "hydrogens": -1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 0,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "e4991afcd42c47d18f0178dffb1f0236",
+      "step": 1
+    },
+    {
+      "id": "09108a5327ae44ac8feaa98813bfd457",
+      "element": "C",
+      "x": 333.92304845413264,
+      "y": -20.000000000000004,
+      "charge": 0,
+      "isotope": 0,
+      "hydrogens": -1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 0,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "76ce71711b944f6aba18902cd73a6338",
+      "step": 1
+    },
+    {
+      "id": "8fa29a66df514398aecbab86e24cbd7d",
+      "element": "O",
+      "x": 385.88457268119896,
+      "y": 10.000000000000014,
+      "charge": -1,
+      "isotope": 0,
+      "hydrogens": -1,
+      "label": "",
+      "radicals": 0,
+      "lone_pairs": 0,
+      "chiral": 0,
+      "aromatic": false,
+      "identity": "b8a148b576b34915903dfd5295f93117",
+      "step": 1
+    }
+  ],
+  "bonds": [
+    {
+      "id": "db3447e511aa4866a2c73e3a1b675dde",
+      "start": "e4991afcd42c47d18f0178dffb1f0236",
+      "end": "76ce71711b944f6aba18902cd73a6338",
+      "order": 1,
+      "style": "plain",
+      "aromatic": false,
+      "stereo": 0,
+      "stereo_atoms": []
+    },
+    {
+      "id": "e347c9d21108402382181b23aa920b46",
+      "start": "76ce71711b944f6aba18902cd73a6338",
+      "end": "b8a148b576b34915903dfd5295f93117",
+      "order": 2,
+      "style": "plain",
+      "aromatic": false,
+      "stereo": 0,
+      "stereo_atoms": []
+    },
+    {
+      "id": "b594709a04c143d192be81af1d23fca7",
+      "start": "09108a5327ae44ac8feaa98813bfd457",
+      "end": "8fa29a66df514398aecbab86e24cbd7d",
+      "order": 1,
+      "style": "plain",
+      "aromatic": false,
+      "stereo": 0,
+      "stereo_atoms": []
+    },
+    {
+      "id": "5d40de06dc1b4d96a59507c3a91a5495",
+      "start": "6d4d45e13b0445488ea0007ed807b452",
+      "end": "09108a5327ae44ac8feaa98813bfd457",
+      "order": 1,
+      "style": "plain",
+      "aromatic": false,
+      "stereo": 0,
+      "stereo_atoms": []
+    },
+    {
+      "id": "693cd2b7cffa4e019b1abc26ea341002",
+      "start": "34a21417bb924467863e7b3e9df3330f",
+      "end": "09108a5327ae44ac8feaa98813bfd457",
+      "order": 1,
+      "style": "plain",
+      "aromatic": false,
+      "stereo": 0,
+      "stereo_atoms": []
+    }
+  ],
+  "sources": [],
+  "arrows": [
+    {
+      "id": "42fa6024f6f64662b64093b465fae1df",
+      "kind": "electron",
+      "x1": 0.0,
+      "y1": -60.0,
+      "x2": 0.0,
+      "y2": -20.000000000000004,
+      "curvature": 60,
+      "start_anchor": "61af2a9ac5834f49b42d6cf8a4249c8e",
+      "end_anchor": "76ce71711b944f6aba18902cd73a6338",
+      "electrons": 2
+    },
+    {
+      "id": "09e233e6cf4f4eb8a69ad064a0f13052",
+      "kind": "electron",
+      "x1": 0,
+      "y1": 0,
+      "x2": 51.96152422706632,
+      "y2": 10.000000000000014,
+      "curvature": -45,
+      "start_anchor": "e347c9d21108402382181b23aa920b46",
+      "end_anchor": "b8a148b576b34915903dfd5295f93117",
+      "electrons": 2
+    },
+    {
+      "id": "17eb6fabee1c435b8eda7a5b03c5f773",
+      "kind": "reaction",
+      "x1": 96.96152422706632,
+      "y1": -15.0,
+      "x2": 211.96152422706632,
+      "y2": -15.0,
+      "curvature": 0,
+      "start_anchor": "",
+      "end_anchor": "",
+      "electrons": 2
+    }
+  ],
+  "notes": [
+    {
+      "id": "139a3fca257644c8bc260ee9d8867634",
+      "text": "Nucleophilic addition",
+      "x": 0,
+      "y": -120,
+      "size": 18
+    },
+    {
+      "id": "f930286d88374d7bad627d9440584e6d",
+      "text": "Step 2",
+      "x": 281.9615242270663,
+      "y": -140.0,
+      "size": 18
+    }
+  ]
+}

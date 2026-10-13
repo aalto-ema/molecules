@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "molecules-editor"
+version = "0.2.0"
+description = "A focused chemical drawing workspace built with Python and PySide6"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["chemistry", "molecules", "chemical-drawing", "pyside6", "rdkit"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Chemistry",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+]
+dependencies = ["PySide6>=6.8,<7", "rdkit>=2024.9,<2027"]
+
+[project.urls]
+Repository = "https://github.com/aalto-ema/molecules"
+Issues = "https://github.com/aalto-ema/molecules/issues"
+
+[project.optional-dependencies]
+dev = ["build>=1.2,<2", "pytest>=8,<10", "pytest-qt>=4.4,<5", "ruff>=0.9,<1"]
+
+[project.scripts]
+molecules = "molecules.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/molecules"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/src", "/tests", "/docs", "/examples", "/.github",
+  "/run_app.py", "/pyproject.toml", "/README.md", "/AGENTS.md",
+  "/CONTRIBUTING.md", "/CHANGELOG.md", "/LICENSE",
+  "/requirements-tested.txt", "/.gitignore", "/.gitattributes",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

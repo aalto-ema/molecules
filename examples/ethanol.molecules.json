@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "title": "Ethanol",
+  "atoms": [
+    {"id": "a1", "element": "C", "x": -65, "y": 20, "charge": 0},
+    {"id": "a2", "element": "C", "x": 0, "y": -20, "charge": 0},
+    {"id": "a3", "element": "O", "x": 65, "y": 20, "charge": 0}
+  ],
+  "bonds": [
+    {"id": "b1", "start": "a1", "end": "a2", "order": 1},
+    {"id": "b2", "start": "a2", "end": "a3", "order": 1}
+  ]
+}
