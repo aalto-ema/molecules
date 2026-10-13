@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Install Qt EGL/OpenGL system libraries for Linux CI.
+- Close vector export streams before atomic replacement on Windows.
+- Use forward-slash asset paths so Windows parses the workspace stylesheet.
+
 - Public repository documentation with current app screenshots.
 - MIT license, contribution guidance, issue and pull request templates.
 - GitHub Actions checks for tests, lint, and package builds.

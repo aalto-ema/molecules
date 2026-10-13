@@ -94,6 +94,5 @@ def apply_theme(widget):
     ):
         palette.setColor(role, QColor(value))
     widget.setPalette(palette)
-    widget.setStyleSheet(
-        STYLESHEET.replace("CHEVRON_PATH", str(Path(__file__).parent / "assets" / "chevron.svg"))
-    )
+    chevron = (Path(__file__).parent / "assets" / "chevron.svg").as_posix()
+    widget.setStyleSheet(STYLESHEET.replace("CHEVRON_PATH", chevron))

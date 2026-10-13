@@ -71,7 +71,9 @@ py -3 -m venv .venv
 After setup, the root launcher automatically uses `.venv`. The installed
 `molecules` command and `python -m molecules` also work inside that environment.
 PySide6 and RDKit are installed by pip; there is no separate Qt installation.
-Linux needs a graphical desktop and the system libraries required by Qt.
+Linux needs a graphical desktop and the system libraries required by Qt. On
+Ubuntu, install the EGL/OpenGL runtime libraries with
+`sudo apt-get install libegl1 libopengl0`; these are needed for headless tests too.
 
 The app has been visually checked on macOS. CI is configured for Linux, macOS,
 and Windows; live cross-platform usability testing remains ongoing.

@@ -4,7 +4,7 @@ import os
 import tempfile
 from pathlib import Path
 
-from PySide6.QtCore import QMarginsF, QRectF, QSize, QSizeF, Qt
+from PySide6.QtCore import QFile, QIODevice, QMarginsF, QRectF, QSize, QSizeF, Qt
 from PySide6.QtGui import QColor, QImage, QPageLayout, QPageSize, QPainter, QPdfWriter
 from PySide6.QtSvg import QSvgGenerator
 
@@ -79,28 +79,38 @@ def export(
             scene.setSceneRect(
                 scene.itemsBoundingRect().adjusted(-padding, -padding, padding, padding)
             )
-            if format == "SVG":
-                device = QSvgGenerator()
-                device.setFileName(str(temporary))
-                device.setSize(QSize(width, height))
-                device.setViewBox(QRectF(0, 0, width, height))
-                device.setResolution(dpi)
-                device.setTitle(document.title)
-                paint(scene, device, width, height, background)
-            elif format == "PDF":
-                device = QPdfWriter(str(temporary))
-                device.setResolution(dpi)
-                device.setTitle(document.title)
-                device.setPageSize(
-                    QPageSize(
-                        QSizeF(width / dpi * 25.4, height / dpi * 25.4), QPageSize.Unit.Millimeter
+            output = QFile(str(temporary))
+            if not output.open(QIODevice.OpenModeFlag.WriteOnly):
+                raise OSError(output.errorString())
+            device = None
+            try:
+                if format == "SVG":
+                    device = QSvgGenerator()
+                    device.setOutputDevice(output)
+                    device.setSize(QSize(width, height))
+                    device.setViewBox(QRectF(0, 0, width, height))
+                    device.setResolution(dpi)
+                    device.setTitle(document.title)
+                    paint(scene, device, width, height, background)
+                elif format == "PDF":
+                    device = QPdfWriter(output)
+                    device.setResolution(dpi)
+                    device.setTitle(document.title)
+                    device.setPageSize(
+                        QPageSize(
+                            QSizeF(width / dpi * 25.4, height / dpi * 25.4),
+                            QPageSize.Unit.Millimeter,
+                        )
                     )
-                )
-                device.setPageMargins(QMarginsF(0, 0, 0, 0), QPageLayout.Unit.Millimeter)
-                paint(scene, device, device.width(), device.height(), background)
+                    device.setPageMargins(QMarginsF(0, 0, 0, 0), QPageLayout.Unit.Millimeter)
+                    paint(scene, device, device.width(), device.height(), background)
+                else:
+                    raise ValueError("Export format must be PNG, SVG, or PDF.")
+            finally:
+                # Finalize vector writers and release the OS handle before atomic
+                # replacement or cleanup, including when rendering raises.
                 del device
-            else:
-                raise ValueError("Export format must be PNG, SVG, or PDF.")
+                output.close()
         if temporary.stat().st_size == 0:
             raise ValueError("Export produced an empty file.")
         os.replace(temporary, path)

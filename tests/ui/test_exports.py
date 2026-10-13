@@ -49,3 +49,23 @@ def test_long_terminal_labels_do_not_have_bonds_drawn_through_them(qapp):
     bonds = [i for i in scene.items() if isinstance(i, QGraphicsLineItem)]
     assert bonds
     assert all(not line.sceneBoundingRect().intersects(rect) for line in bonds)
+
+
+def test_failed_vector_export_preserves_destination_and_cleans_up(qapp, tmp_path, monkeypatch):
+    import pytest
+
+    from molecules.exports import visual
+
+    document = from_smiles("CCO")
+
+    def fail(*args, **kwargs):
+        raise RuntimeError("Rendering failed")
+
+    monkeypatch.setattr(visual, "paint", fail)
+    for format in ("SVG", "PDF"):
+        path = tmp_path / ("existing." + format.lower())
+        path.write_bytes(b"Previous export")
+        with pytest.raises(RuntimeError, match="Rendering failed"):
+            export(document, path, format=format)
+        assert path.read_bytes() == b"Previous export"
+    assert {p.name for p in tmp_path.iterdir()} == {"existing.svg", "existing.pdf"}
