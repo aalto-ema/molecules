@@ -236,3 +236,25 @@ def test_advanced_changes_only_the_field_that_was_edited(qtbot):
     changed = window.document.atoms[-1]
     assert (changed.charge, changed.isotope, changed.hydrogens, changed.label) == (-1, 18, 1, "OH")
     clean(window)
+
+
+def test_selection_bar_adapts_to_wide_control_metrics(qtbot):
+    window = editor(qtbot)
+    window.setStyleSheet(window.styleSheet() + '\nQPushButton[role="chip"] { min-width: 70px; }')
+    window.set_workspace_mode("mechanism")
+    window.resize(840, 620)
+    window.selected = {window.document.atoms[-1].id}
+    window.refresh()
+    qtbot.wait(20)
+    bar = window.context_bar
+    assert bar.x() + bar.width() <= window.view.viewport().width()
+    details = next(b for b in bar.findChildren(QPushButton) if b.text() == "Details")
+    assert details.isVisible()
+    assert any(
+        b.property("elementPreset") and not b.isVisible() for b in bar.findChildren(QPushButton)
+    )
+    window.resize(1500, 850)
+    qtbot.wait(20)
+    presets = [b for b in bar.findChildren(QPushButton) if b.property("elementPreset")]
+    assert any(b.isVisible() for b in presets)
+    clean(window)

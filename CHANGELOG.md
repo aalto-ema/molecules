@@ -4,6 +4,7 @@
 
 - Install Qt EGL/OpenGL system libraries for Linux CI.
 - Close vector export streams before atomic replacement on Windows.
+- Fit contextual element presets to actual platform font/control widths.
 - Use forward-slash asset paths so Windows parses the workspace stylesheet.
 
 - Public repository documentation with current app screenshots.

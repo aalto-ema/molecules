@@ -648,7 +648,7 @@ class WorkspaceMixin:
         )
         self.canvas_hint.setToolTip(hint)
         self.canvas_hint.adjustSize()
-        self.context_bar.adjustSize()
+        self.fit_context_bar(width)
         self.context_bar.move(max(8, (width - self.context_bar.width()) // 2), 14)
         self.welcome.adjustSize()
         self.welcome.move(
@@ -657,6 +657,28 @@ class WorkspaceMixin:
         )
         self.canvas_hint.move(18, max(18, height - 30))
         self.context_bar.raise_()
+
+    def fit_context_bar(self, viewport_width):
+        # Platform font metrics can make even the compact presets too wide.
+        # Keep charge, Details, and Delete reachable; omitted element presets
+        # remain available through inline editing, shortcuts, and Details.
+        presets = [
+            self.context_layout.itemAt(i).widget()
+            for i in range(self.context_layout.count())
+            if self.context_layout.itemAt(i).widget().property("elementPreset")
+        ]
+        for control in presets:
+            control.show()
+        self.context_layout.invalidate()
+        self.context_layout.activate()
+        available = max(0, viewport_width - 16)
+        for control in reversed(presets):
+            if self.context_layout.sizeHint().width() <= available:
+                break
+            control.hide()
+            self.context_layout.invalidate()
+            self.context_layout.activate()
+        self.context_bar.adjustSize()
 
     def build_context_bar(self):
         compact = self._context_compact = self.view.viewport().width() < 560
@@ -698,6 +720,7 @@ class WorkspaceMixin:
                 control = button(
                     element, lambda checked=False, e=element: self.quick_element(e), "chip"
                 )
+                control.setProperty("elementPreset", True)
                 control.setToolTip(f"Change element to {element} ({element})")
                 self.context_layout.addWidget(control)
             if atoms:

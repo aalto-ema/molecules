@@ -15,7 +15,9 @@ form. Mechanism guidance uses a separate sidebar; it yields that space when
 advanced details are open. The rail and guide scroll in short windows, with the
 mechanism review button fixed outside scrolling content. Selection controls
 compact at narrow widths; omitted secondary actions remain available through
-Details or the context menu. Long document names elide with a full-text tooltip.
+Details or the context menu. Element presets also yield space according to their
+measured width, retaining charge, Details, and Delete across platform font metrics.
+Long document names elide with a full-text tooltip.
 
 Shared tokens/styles live in `ui/theme.py`. Interactive targets generally start
 around 36 px; rail buttons are 50 px high. Icons have text labels and tooltips,
