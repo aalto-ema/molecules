@@ -83,9 +83,15 @@ credential files. Explicit source archives include examples, documentation, and
 screenshots. GitHub Actions is configured for lint, tests, and package builds on
 Linux/macOS/Windows; hosted results remain to be checked after the first push.
 
+## Windows installer — delivered
+
+GitHub Actions produces an unsigned x64 installer with a bundled runtime,
+Start menu shortcut, and uninstaller. The workflow checks the installed app and
+uploads the setup executable and checksum.
+
 ## 5 — Reliability and distribution: next
 
 Autosave/recovery, recent documents, chemical interchange, offline systematic-name
-parsing, cross-platform dependency locks/installers, large-document profiling,
+parsing, cross-platform dependency locks, installer signing and distribution for other platforms, large-document profiling,
 advanced stereochemistry, and accessibility/usability testing with real users.
 Do not call the app a verified ChemDraw replacement before those comparisons.

@@ -41,7 +41,7 @@ If you already initialized Git or have a remote, inspect `git status` and
 
 ## Upload through the website
 
-Upload the source folders `src`, `tests`, `docs`, `examples`, and `.github`,
+Upload the source folders `src`, `tests`, `docs`, `examples`, `packaging`, and `.github`,
 along with the root files `README.md`, `LICENSE`, `pyproject.toml`, `run_app.py`,
 `AGENTS.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `requirements-tested.txt`,
 `.gitignore`, and `.gitattributes`. Preserve their folder structure. Do not upload
@@ -72,3 +72,28 @@ includes the README screenshots, examples, tests, and project documentation.
 Build artifacts are ignored by Git; publish them as release attachments only if
 wanted. The wheel contains the app, packaged SVG asset, and MIT license, rather
 than the whole documentation tree. A package build does not publish to PyPI.
+
+
+## Build the Windows installer
+
+The [Windows installer workflow](../.github/workflows/windows-installer.yml)
+runs after relevant source changes and can be started manually in GitHub Actions.
+The Windows runner freezes the app with PyInstaller and compiles a per-user
+installer with Inno Setup 6. Before upload, it checks the Start menu shortcut,
+runs the installed app through a SMILES, save/reopen, and PNG/SVG/PDF smoke test,
+then checks that uninstall removes the app and shortcut while leaving the drawing.
+
+To reproduce the build on Windows x64 with Python 3.12, PowerShell 7, and
+[Inno Setup 6](https://jrsoftware.org/isdl.php) installed, run from a Git checkout:
+
+```powershell
+py -3.12 -m venv .venv
+. .\.venv\Scripts\Activate.ps1
+python -m pip install . -r packaging/windows/requirements.txt
+./packaging/windows/build.ps1
+```
+
+The result is an unsigned setup executable and its SHA-256 checksum in
+`dist/installer/`. The installer includes dependency notices and version-specific
+source links. The workflow uploads a downloadable artifact without publishing a
+GitHub Release.

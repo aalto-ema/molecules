@@ -92,10 +92,15 @@ checks, the full headless Qt suite, and package builds for three operating syste
 The README and `CONTRIBUTING.md` describe installation and local verification;
 `docs/PUBLISHING.md` covers the initial public GitHub upload.
 
+`packaging/windows/` freezes the installed wheel and runtime dependencies as a
+directory of files, keeping Qt shared libraries separate. Inno Setup packages
+that directory as a per-user x64 installer. The dedicated Windows workflow
+smoke tests installation, rendering and export, and removal before upload.
+
 ## Remaining engineering work
 
 Autosave/recovery, recent documents, tested dependency locks across platforms,
-installers, chemical interchange, fused-ring tools, advanced stereochemistry,
+installer signing and other platforms, chemical interchange, fused-ring tools, advanced stereochemistry,
 accessible shortcut review, and observed user task comparison. The snapshot
 implementation should be profiled before broadening document size limits.
 

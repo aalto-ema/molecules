@@ -37,7 +37,7 @@ packages = ["src/molecules"]
 
 [tool.hatch.build.targets.sdist]
 include = [
-  "/src", "/tests", "/docs", "/examples", "/.github",
+  "/src", "/tests", "/docs", "/examples", "/.github", "/packaging",
   "/run_app.py", "/pyproject.toml", "/README.md", "/AGENTS.md",
   "/CONTRIBUTING.md", "/CHANGELOG.md", "/LICENSE",
   "/requirements-tested.txt", "/.gitignore", "/.gitattributes",

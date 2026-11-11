@@ -40,7 +40,20 @@ Screenshots show the actual app with example drawings; they are not mockups.
   SVG, or PDF with a preview, selection/document content, padding, and transparent,
   white, or custom backgrounds. Editor decorations stay out of exports.
 
-## Run locally
+## Windows installer
+
+Open [Windows installer in GitHub Actions](https://github.com/aalto-ema/molecules/actions/workflows/windows-installer.yml),
+select a successful run, and download **Molecules-windows-x64-installer** from
+**Artifacts**. Sign in to GitHub to download it. Extract the ZIP and run
+`Molecules-<version>-windows-x64-setup.exe`.
+
+The installer is for 64-bit Intel/AMD Windows and bundles Python, Qt, and RDKit.
+It installs for your account and adds a Start menu shortcut. You can remove it
+from **Settings → Apps → Installed apps**. The installer is unsigned; download
+it from this repository and use the included SHA-256 checksum to verify the
+file. Artifacts expire after 90 days.
+
+## Run locally from source
 
 Requires **Python 3.11+**. Clone the repository and enter its root folder:
 
@@ -130,7 +143,7 @@ export work offline.
 Chemical validation is advisory so unusual-valence intermediates remain editable.
 Display abbreviations do not expand into fragments. Advanced stereochemical
 editing, fused-ring gestures, chemical interchange, autosave/recovery, and
-installers are future work. See the [roadmap](docs/ROADMAP.md).
+installers for other platforms are future work. See the [roadmap](docs/ROADMAP.md).
 
 Native format v4 retains layout, annotations, provenance, and step identity;
 versions 1–3 remain readable. SVG and PDF preserve vector geometry. Transparent
