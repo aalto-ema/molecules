@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Build and smoke test a standalone Windows x64 installer in GitHub Actions.
+  The installer and SHA-256 checksum are available as a workflow artifact.
+
 - Install Qt EGL/OpenGL system libraries for Linux CI.
 - Close vector export streams before atomic replacement on Windows.
 - Fit contextual element presets to actual platform font/control widths.
